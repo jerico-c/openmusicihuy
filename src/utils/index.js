@@ -1,22 +1,37 @@
-// src/utils/index.js
-
-// Untuk GET /songs/{id}
-const mapSongDBToModel = ({
-  id,
-  title,
-  year,
-  performer,
-  genre,
-  duration,
-  album_id, // dari DB
-}) => ({
-  id,
-  title,
-  year,
-  performer,
-  genre,
-  duration,
-  albumId: album_id, // ke JS
+const mapDBSongsToModel = ({ id, title, performer }) => ({
+    id,
+    title,
+    performer,
 });
 
-module.exports = { mapSongDBToModel };
+const mapDBSongsToModelDetail = ({
+    id,
+    title,
+    year,
+    performer,
+    genre,
+    duration,
+    album_id: albumId,
+}) => ({
+    id,
+    title,
+    year,
+    performer,
+    genre,
+    duration,
+    albumId,
+});
+
+const mapDBAlbumsToModel = ({ id, name, cover, year, songs }) => ({
+    id,
+    name,
+    coverUrl: cover,
+    year,
+    songs,
+});
+
+module.exports = {
+    mapDBSongsToModel,
+    mapDBSongsToModelDetail,
+    mapDBAlbumsToModel,
+};
